@@ -26,5 +26,9 @@ class ClientTest {
 		client.account().setBalance(314.16);
 		assertThat(client.deposeMoney(100).account().balance()).isEqualTo(414.16);
 	}
-
+	@Test
+	public void shouldAdjustTheAccountBalanceFromAWithdraw(){
+		client.account().setBalance(314.16);
+		assertThat(client.withdrawMoney(100).account().balance()).isEqualTo(214.16);
+	}
 }
