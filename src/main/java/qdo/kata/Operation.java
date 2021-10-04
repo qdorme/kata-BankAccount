@@ -1,7 +1,10 @@
 package qdo.kata;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Operation {
 	private final OperationType type;
@@ -20,4 +23,10 @@ public class Operation {
 		return type.computeBalance(balanceBeforeOperation, amount);
 	}
 
+	public String toString(){
+		return String.format("%s of %s the %s, the new balance is %s", type.name().toLowerCase(Locale.ENGLISH),
+				amount.setScale(2, RoundingMode.CEILING),
+				when.format(DateTimeFormatter.ofPattern("MM/dd/yyyy")),
+				balanceAfterOperation().setScale(2, RoundingMode.CEILING) );
+	}
 }
