@@ -1,6 +1,7 @@
 package qdo.kata;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 
 public class Account {
 	private BigDecimal balance;
@@ -22,5 +23,9 @@ public class Account {
 	public Account withdrawMoney(double money) {
 		this.balance = balance.subtract(BigDecimal.valueOf(money));
 		return this;
+	}
+
+	public Collection<Object> operations() {
+		return null;
 	}
 }

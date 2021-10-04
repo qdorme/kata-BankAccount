@@ -31,4 +31,9 @@ class ClientTest {
 		client.account().setBalance(314.16);
 		assertThat(client.withdrawMoney(100).account().balance()).isEqualTo(214.16);
 	}
+	@Test
+	public void shouldHaveTwoOperationInHistory(){
+		client.account().setBalance(314.16);
+		assertThat(client.withdrawMoney(100).deposeMoney(200).account().operations().size()).isEqualTo(2);
+	}
 }
