@@ -11,4 +11,9 @@ public class Account {
 		this.balance = balance;
 		return this;
 	}
+
+	public Account deposeMoney(double amount) {
+		balance += amount;
+		return this;
+	}
 }
