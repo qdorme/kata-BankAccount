@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static qdo.kata.OperationType.DEPOSIT;
+import static qdo.kata.OperationType.WITHDRAWAL;
+
 public class Account {
 	private BigDecimal balance;
 	private final List<Operation> operations;
@@ -22,14 +25,15 @@ public class Account {
 	}
 
 	public Account deposeMoney(double amount) {
-		Operation operation = new Operation(OperationType.DEPOSIT,balance,BigDecimal.valueOf(amount));
-		operations.add(operation);
-		balance = operation.balanceAfterOperation();
-		return this;
+		return addOperation(amount, DEPOSIT);
 	}
 
 	public Account withdrawMoney(double amount) {
-		Operation operation = new Operation(OperationType.WITHDRAWAL,balance,BigDecimal.valueOf(amount));
+		return addOperation(amount, WITHDRAWAL);
+	}
+
+	private Account addOperation(double amount, OperationType type){
+		Operation operation = new Operation(type,balance,BigDecimal.valueOf(amount));
 		operations.add(operation);
 		balance = operation.balanceAfterOperation();
 		return this;
