@@ -1,19 +1,26 @@
 package qdo.kata;
 
-public class Account {
-	private double balance;
+import java.math.BigDecimal;
 
-	public double balance() {
-		return balance;
+public class Account {
+	private BigDecimal balance;
+
+	public double balance(){
+		return balance.setScale(2).doubleValue();
 	}
 
 	public Account setBalance(double balance) {
-		this.balance = balance;
+		this.balance = BigDecimal.valueOf(balance);
 		return this;
 	}
 
-	public Account deposeMoney(double amount) {
-		balance += amount;
+	public Account deposeMoney(double money) {
+		balance = balance.add(BigDecimal.valueOf(money));
+		return this;
+	}
+
+	public Account withdrawMoney(double money) {
+		this.balance = balance.subtract(BigDecimal.valueOf(money));
 		return this;
 	}
 }

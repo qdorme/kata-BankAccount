@@ -22,6 +22,7 @@ public class Client {
 	public Client withdrawMoney(double amount) {
 		if (amount < 0.01)
 			throw new IllegalArgumentException("The amount of a withdrawal has to be at least 0.01");
+		account.withdrawMoney(amount);
 		return this;
 	}
 }
