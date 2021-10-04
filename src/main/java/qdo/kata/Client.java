@@ -18,4 +18,8 @@ public class Client {
 	public Account account(){
 		return account;
 	}
+
+	public Client withdrawMoney(double amount) {
+		return this;
+	}
 }

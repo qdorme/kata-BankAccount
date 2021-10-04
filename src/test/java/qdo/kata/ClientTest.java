@@ -18,10 +18,13 @@ class ClientTest {
 	public void shouldThrowIllegalArgumentException(){
 		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> client.deposeMoney(-100));
 		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> client.deposeMoney(0));
+		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> client.withdrawMoney(-100));
+		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> client.withdrawMoney(0));
 	}
 	@Test
 	public void shouldAdjustTheAccountBalanceFromADeposit(){
 		client.account().setBalance(314.16);
 		assertThat(client.deposeMoney(100).account().balance()).isEqualTo(414.16);
 	}
+
 }
